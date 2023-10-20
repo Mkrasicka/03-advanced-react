@@ -5,7 +5,10 @@ const UseStateArray = () => {
   // !set array as people
   const [people, setPeople] = React.useState(data);
 
-  const removeItem = () => {};
+  const removeItem = (id) => {
+    setPeople(people.filter((person) => person.id !== id));
+    // people.filter(person.id === id);
+  };
   // !set array to an empty array
   const clearAllPeople = () => {
     setPeople([]);
@@ -19,7 +22,11 @@ const UseStateArray = () => {
         return (
           <div key={id}>
             <h4>{name}</h4>
-            <button type="button" className="btn">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => removeItem(id)}
+            >
               remove
             </button>
           </div>
